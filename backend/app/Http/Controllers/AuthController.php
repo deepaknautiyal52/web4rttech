@@ -32,6 +32,7 @@ class AuthController extends Controller
 
         $token = $user->createToken('admin-token')->plainTextToken;
 
+
         return response()->json([
             'token' => $token,
             'user' => $user->only('id', 'name', 'email'),
