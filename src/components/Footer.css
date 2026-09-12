@@ -1,0 +1,235 @@
+.footer {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  color: #ffffff;
+  margin-top: 80px;
+}
+
+/* CTA strip */
+.footer-cta {
+  background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+  padding: 40px 20px;
+}
+
+.footer-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-cta-inner h3 {
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.footer-cta-inner p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer-cta-btn {
+  background-color: #ffffff;
+  color: #4F46E5;
+  padding: 13px 30px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.footer-cta-btn:hover {
+  color: #4F46E5;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.footer-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding: 60px 20px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><pattern id="fgrid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M 36 0 L 0 0 0 36" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/></pattern></defs><rect width="1200" height="400" fill="url(%23fgrid)"/></svg>');
+  background-position: top center;
+}
+
+.footer-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-logo {
+  display: inline-block;
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.footer-logo span {
+  color: #06B6D4;
+}
+
+.footer-tagline {
+  color: #a0a0a0;
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 260px;
+}
+
+.footer-section h3 {
+  position: relative;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  padding-bottom: 14px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #4F46E5 0%, #06B6D4 100%);
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 14px;
+}
+
+.footer-section a {
+  color: #b0b0b0;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.footer-section a:hover {
+  color: #ffffff;
+  margin-left: 5px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+  border-radius: 50%;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  font-weight: 700;
+  color: white;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+}
+
+.footer-bottom {
+  background: linear-gradient(135deg, #050505 0%, #0a0a0a 100%);
+  padding: 25px 20px;
+  border-top: 1px solid #333333;
+}
+
+.footer-bottom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-bottom p {
+  color: #888888;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.footer-links {
+  display: flex;
+  gap: 25px;
+}
+
+.footer-links a {
+  color: #888888;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-tagline {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-cta-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px 20px 20px;
+  }
+
+  .footer-bottom .container {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

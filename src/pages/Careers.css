@@ -1,0 +1,198 @@
+.careers-content {
+  padding: 80px 20px;
+  background-color: #ffffff;
+}
+
+.careers-intro {
+  margin-bottom: 80px;
+}
+
+.careers-intro h2 {
+  font-size: 36px;
+  color: #4F46E5;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.reason-card {
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.reason-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.1);
+}
+
+.reason-card h3 {
+  font-size: 20px;
+  color: #4F46E5;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.reason-card p {
+  color: #666;
+  font-size: 15px;
+}
+
+.job-openings {
+  margin: 60px 0;
+}
+
+.job-openings h2 {
+  font-size: 36px;
+  color: #4F46E5;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.jobs-list {
+  display: grid;
+  gap: 20px;
+}
+
+.job-card {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  border-left: 4px solid #4F46E5;
+  transition: all 0.3s ease;
+}
+
+.job-card:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 5px 20px rgba(79, 70, 229, 0.1);
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.job-header h3 {
+  color: #4F46E5;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.job-experience {
+  background-color: #EEF2FF;
+  color: #4F46E5;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.job-location {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.apply-btn {
+  background-color: #4F46E5;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background-color: #06B6D4;
+  transform: translateX(5px);
+}
+
+.internship-section {
+  background-color: #f5f5f5;
+  padding: 60px 40px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.internship-section h2 {
+  font-size: 32px;
+  color: #4F46E5;
+  margin-bottom: 20px;
+}
+
+.internship-section p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.learn-more-btn {
+  background-color: #4F46E5;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.learn-more-btn:hover {
+  background-color: #06B6D4;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(79, 70, 229, 0.2);
+}
+
+@media (max-width: 1024px) {
+  .reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .careers-content {
+    padding: 50px 20px;
+  }
+
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .careers-intro h2,
+  .job-openings h2 {
+    font-size: 28px;
+  }
+
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .job-experience {
+    align-self: flex-start;
+  }
+
+  .internship-section {
+    padding: 40px 25px;
+  }
+
+  .internship-section h2 {
+    font-size: 24px;
+  }
+}

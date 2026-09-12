@@ -1,0 +1,42 @@
+.admin-settings-panel {
+  max-width: 480px;
+}
+
+.admin-settings-panel h2 {
+  font-size: 17px;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.admin-settings-hint {
+  color: #888;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.admin-settings-form {
+  margin-top: 10px;
+}
+
+.admin-settings-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+  color: white;
+  padding: 13px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-settings-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.25);
+}
+
+.admin-settings-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

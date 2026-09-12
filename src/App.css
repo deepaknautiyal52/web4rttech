@@ -1,0 +1,35 @@
+.App {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App > main {
+  flex: 1;
+  width: 100%;
+}
+
+/* Container utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .container-fluid {
+    padding: 0 15px;
+  }
+}
