@@ -17,14 +17,35 @@
 }
 
 .admin-sidebar-logo {
-  font-size: 22px;
-  font-weight: 800;
-  padding: 28px 26px 24px;
-  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 22px 26px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.admin-sidebar-logo span {
+.admin-sidebar-logo-mark {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
+}
+
+.admin-sidebar-logo-text {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.admin-sidebar-logo-text span {
   color: #22D3EE;
 }
 

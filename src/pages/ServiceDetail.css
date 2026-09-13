@@ -23,6 +23,30 @@
   background-color: #ffffff;
 }
 
+.service-breadcrumb {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #999;
+}
+
+.service-breadcrumb a {
+  color: #4F46E5;
+  font-weight: 600;
+}
+
+.service-breadcrumb a:hover {
+  color: #06B6D4;
+}
+
+.service-breadcrumb span[aria-current] {
+  color: #666;
+  font-weight: 600;
+}
+
 .service-detail-wrap {
   max-width: 900px;
   margin: 0 auto;

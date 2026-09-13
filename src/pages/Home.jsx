@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import services from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
 import HeroSlider from '../components/HeroSlider';
+import SEO from '../components/SEO';
 import './Home.css';
 
 const FEATURED_SERVICE_IDS = [
@@ -45,6 +46,12 @@ const PROCESS_STEPS = [
 const Home = () => {
   return (
     <main>
+      <SEO
+        title="Web Development, Digital Marketing & AI Solutions"
+        description="Web4rtTech is a digital-first IT services and consulting company offering web & mobile development, SEO, PPC, digital marketing, and AI & data science solutions for businesses in India and worldwide."
+        path="/"
+      />
+
       {/* Hero Slider */}
       <HeroSlider />
 
@@ -58,10 +65,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Web4rt Section */}
+      {/* Why Web4rtTech Section */}
       <section className="why-section">
         <div className="container">
-          <h2>Why Web4rt</h2>
+          <h2>Why Web4rtTech</h2>
           <div className="why-grid">
             {WHY_WEB4RT.map((item) => (
               <div key={item.title} className="why-card">
@@ -117,12 +124,12 @@ const Home = () => {
           <h2>Latest Updates</h2>
           <div className="news-grid">
             <article className="news-card">
-              <h3>Web4rt Launches AI-First Delivery Framework</h3>
+              <h3>Web4rtTech Launches AI-First Delivery Framework</h3>
               <p>A new approach to project delivery that embeds AI-assisted engineering across every stage</p>
               <Link to="/news/ai-first-delivery" className="read-more">Read more →</Link>
             </article>
             <article className="news-card">
-              <h3>Web4rt Cloud Fabric™ Now Live</h3>
+              <h3>Web4rtTech Cloud Fabric™ Now Live</h3>
               <p>A composable stack of cloud services and connectors built to accelerate enterprise migrations</p>
                 <Link to="/news/cloud-fabric" className="read-more">Read more →</Link>
             </article>
@@ -139,7 +146,7 @@ const Home = () => {
       <section className="cta-section">
         <div className="container">
           <h2>Let's build what's next, together</h2>
-          <p>Connect with our experts to discover how Web4rt can transform your business</p>
+          <p>Connect with our experts to discover how Web4rtTech can transform your business</p>
           <Link to="/contact">
             <button className="cta-button-primary">Contact Us</button>
           </Link>

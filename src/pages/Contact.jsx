@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import services, { categories } from '../data/services';
 import HeroIllustration from '../components/HeroIllustration';
+import SEO from '../components/SEO';
 import './Contact.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
@@ -91,6 +92,12 @@ const Contact = () => {
 
   return (
     <main>
+      <SEO
+        title="Contact Us / Get a Quote"
+        description="Get in touch with Web4rtTech for a free project quote. We reply within one business day and work with clients across India and internationally."
+        path="/contact"
+      />
+
       <section className="page-hero">
         <div className="container page-hero-flex">
           <div className="page-hero-text">
@@ -265,7 +272,7 @@ const Contact = () => {
               <div className="info-card">
                 <h3>Headquarters</h3>
                 <p>
-                  Web4rt<br/>
+                  Web4rtTech<br/>
                   Near Monal Farm, Dehradun, Uttarakhand, India<br/>
                   248001
                 </p>
@@ -281,14 +288,15 @@ const Contact = () => {
               <div className="info-card">
                 <h3>Phone</h3>
                 <p>
-                  <a href="tel:+910000000000">+91 8979528858,7017857510</a>
+                  <a href="tel:+918979528858">+91 89795 28858</a>,{' '}
+                  <a href="tel:+917017857510">+91 70178 57510</a>
                 </p>
               </div>
 
               <div className="info-card">
                 <h3>Email</h3>
                 <p>
-                  <a href="mailto:hello@web4rt.com">info@web4rt.com</a>
+                  <a href="mailto:info@web4rttech.com">info@web4rttech.com</a>
                 </p>
               </div>
 

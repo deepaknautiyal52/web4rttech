@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { API_URL, clearSession, getToken, getUser } from '../../utils/adminAuth';
-import { IconGrid, IconInbox, IconLogout, IconGlobe, IconSettings } from './icons';
+import { IconGrid, IconInbox, IconLogout, IconGlobe, IconSettings, IconWallet } from './icons';
 import './AdminShared.css';
 import './AdminLayout.css';
 
@@ -36,7 +36,8 @@ const AdminLayout = () => {
     <div className="admin-shell">
       <aside className="admin-sidebar">
         <div className="admin-sidebar-logo">
-          Web<span>4</span>rt
+          <span className="admin-sidebar-logo-mark">4</span>
+          <span className="admin-sidebar-logo-text">Web<span>4</span>rtTech</span>
         </div>
 
         <nav className="admin-nav">
@@ -54,6 +55,13 @@ const AdminLayout = () => {
           >
             <IconInbox className="admin-nav-icon" />
             Submissions
+          </NavLink>
+          <NavLink
+            to="/admin/finances"
+            className={({ isActive }) => `admin-nav-link${isActive ? ' active' : ''}`}
+          >
+            <IconWallet className="admin-nav-icon" />
+            Finances
           </NavLink>
           <NavLink
             to="/admin/settings"

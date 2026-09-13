@@ -4,8 +4,53 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#4F46E5" />
-    <meta name="description" content="Web4rt - Digital-First, Cloud-First, AI-First IT Services & Consulting" />
-    <title>Web4rt - Engineering Your Digital Future</title>
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+
+    <!--
+      This app is a plain client-side React SPA (no server-side rendering),
+      so per-page <title>/<meta description>/canonical/OG/Twitter tags are
+      set dynamically via react-helmet-async (see src/components/SEO.jsx),
+      not hardcoded here. Duplicating them here would create two competing
+      tags once React mounts (Helmet has no way to know about, and remove,
+      tags it didn't render itself), which actively confuses crawlers about
+      which description/canonical is authoritative -- worse than having
+      none. The one tradeoff: crawlers that don't execute JavaScript (e.g.
+      Facebook/LinkedIn/WhatsApp link-preview bots) will only ever see the
+      bare <title> below, not a description or OG image. Fixing that
+      properly requires server-side rendering or prerendering.
+    -->
+    <title>Web4rtTech - Web Development, Digital Marketing &amp; AI Solutions</title>
+
+    <!--
+      Sitewide Organization schema. Kept as static markup (not injected via
+      JS/Helmet) so it's guaranteed visible to crawlers that don't execute
+      JavaScript. Update "sameAs" with real social profile URLs once those
+      exist -- the footer currently links to placeholder "#" anchors.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Web4rtTech",
+        "url": "https://web4rttech.com",
+        "logo": "https://web4rttech.com/favicon.svg",
+        "image": "https://web4rttech.com/og-image.png",
+        "description": "Digital-first IT services and consulting company offering web & mobile development, SEO, PPC, digital marketing, and AI & data science solutions.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Near Monal Farm",
+          "addressLocality": "Dehradun",
+          "addressRegion": "Uttarakhand",
+          "postalCode": "248001",
+          "addressCountry": "IN"
+        },
+        "telephone": "+91-8979528858",
+        "email": "info@web4rttech.com",
+        "priceRange": "$$"
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

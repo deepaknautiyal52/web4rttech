@@ -1,13 +1,14 @@
 .footer {
   background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
   color: #ffffff;
-  margin-top: 80px;
 }
 
 /* CTA strip */
 .footer-cta {
   background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
   padding: 40px 20px;
+  margin-top: 80px;
+  margin-bottom: 28px;
 }
 
 .footer-cta-inner {
@@ -69,14 +70,39 @@
 }
 
 .footer-logo {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 16px;
+  transition: transform 0.25s ease;
+}
+
+.footer-logo:hover {
+  transform: scale(1.03);
+}
+
+.footer-logo-mark {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 800;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
+}
+
+.footer-logo-text {
   font-size: 26px;
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 16px;
 }
 
-.footer-logo span {
+.footer-logo-text span {
   color: #06B6D4;
 }
 

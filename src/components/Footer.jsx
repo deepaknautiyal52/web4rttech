@@ -4,20 +4,24 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <>
       <div className="footer-cta">
         <div className="container footer-cta-inner">
           <div>
             <h3>Have a project in mind?</h3>
-            <p>Let's talk about how Web4rt can help you build, grow, and scale.</p>
+            <p>Let's talk about how Web4rtTech can help you build, grow, and scale.</p>
           </div>
           <Link to="/contact" className="footer-cta-btn">Get a Quote →</Link>
         </div>
       </div>
 
-      <div className="footer-content container">
+      <footer className="footer">
+        <div className="footer-content container">
         <div className="footer-section footer-brand">
-          <Link to="/" className="footer-logo">Web<span>4</span>rt</Link>
+          <Link to="/" className="footer-logo">
+            <span className="footer-logo-mark">4</span>
+            <span className="footer-logo-text">Web<span>4</span>rtTech</span>
+          </Link>
           <p className="footer-tagline">Engineering digital experiences that move your business forward.</p>
         </div>
 
@@ -66,16 +70,17 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} Web4rt. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Web4rtTech. All rights reserved.</p>
           <div className="footer-links">
-            <a href="#terms">Terms of Use</a>
-            <a href="#privacy">Privacy Statement</a>
-            <a href="#cookies">Cookie Policy</a>
-            <a href="#sitemap">Site Map</a>
+            <Link to="/terms">Terms of Use</Link>
+            <Link to="/privacy">Privacy Statement</Link>
+            <Link to="/cookies">Cookie Policy</Link>
+            <Link to="/sitemap">Site Map</Link>
           </div>
         </div>
       </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 

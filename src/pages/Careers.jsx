@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroIllustration from '../components/HeroIllustration';
+import SEO from '../components/SEO';
 import './Careers.css';
 
 const Careers = () => {
@@ -44,10 +45,16 @@ const Careers = () => {
 
   return (
     <main>
+      <SEO
+        title="Careers"
+        description="Join Web4rtTech's team and grow your career in web development, mobile apps, digital marketing, or AI & data science. View current openings and internship programs."
+        path="/careers"
+      />
+
       <section className="page-hero">
         <div className="container page-hero-flex">
           <div className="page-hero-text">
-            <h1>Careers at Web4rt</h1>
+            <h1>Careers at Web4rtTech</h1>
             <p>Join our team and grow your career</p>
           </div>
           <div className="page-hero-illustration">
@@ -59,7 +66,7 @@ const Careers = () => {
       <section className="careers-content">
         <div className="container">
           <div className="careers-intro">
-            <h2>Why Work at Web4rt?</h2>
+            <h2>Why Work at Web4rtTech?</h2>
             <div className="reasons-grid">
               <div className="reason-card">
                 <h3>🌍 Diverse Teams</h3>
@@ -107,7 +114,7 @@ const Careers = () => {
           <section className="internship-section">
             <h2>Internship Programs</h2>
             <p>
-              Web4rt offers exciting internship programs for students and freshers.
+              Web4rtTech offers exciting internship programs for students and freshers.
               Be part of a growing IT company and kick-start your career.
             </p>
             <button className="learn-more-btn">Learn About Internships</button>

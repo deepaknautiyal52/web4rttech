@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import services, { categories } from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
+import SEO, { SITE_URL } from '../components/SEO';
 import './ServiceDetail.css';
 
 const FaqItem = ({ q, a }) => {
@@ -35,8 +36,46 @@ const ServiceDetail = () => {
     );
   }
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE_URL}/services` },
+      { '@type': 'ListItem', position: 3, name: service.title, item: `${SITE_URL}/services/${service.id}` }
+    ]
+  };
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: service.title,
+    name: service.title,
+    description: service.long,
+    url: `${SITE_URL}/services/${service.id}`,
+    areaServed: 'Worldwide',
+    provider: { '@type': 'Organization', name: 'Web4rtTech', url: SITE_URL }
+  };
+
+  const faqJsonLd = service.faqs && service.faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: service.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a }
+    }))
+  } : null;
+
   return (
     <main>
+      <SEO
+        title={service.title}
+        description={service.description}
+        path={`/services/${service.id}`}
+        jsonLd={[breadcrumbJsonLd, serviceJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])]}
+      />
+
       <section className="page-hero service-detail-hero">
         <div className="container">
           <Link to={`/services#${category.id}`} className="service-eyebrow">{category.title}</Link>
@@ -47,6 +86,14 @@ const ServiceDetail = () => {
 
       <section className="service-detail-content">
         <div className="container">
+          <nav className="service-breadcrumb" aria-label="Breadcrumb">
+            <Link to="/">Home</Link>
+            <span>/</span>
+            <Link to="/services">Services</Link>
+            <span>/</span>
+            <span aria-current="page">{service.title}</span>
+          </nav>
+
           <div className="service-detail-wrap">
             <div className="service-detail-icon">
               <ServiceIcon id={service.id} />

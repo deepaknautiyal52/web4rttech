@@ -1,16 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import './News.css';
 
 const articles = [
-  { id: 'ai-first-delivery', title: 'Web4rt Launches AI-First Delivery Framework', excerpt: 'A new approach to project delivery that embeds AI-assisted engineering across every stage' },
-  { id: 'cloud-fabric', title: 'Web4rt Cloud Fabric™ Now Live', excerpt: 'A composable stack of cloud services and connectors built to accelerate enterprise migrations' },
+  { id: 'ai-first-delivery', title: 'Web4rtTech Launches AI-First Delivery Framework', excerpt: 'A new approach to project delivery that embeds AI-assisted engineering across every stage' },
+  { id: 'cloud-fabric', title: 'Web4rtTech Cloud Fabric™ Now Live', excerpt: 'A composable stack of cloud services and connectors built to accelerate enterprise migrations' },
   { id: 'innovations-2025', title: 'New Innovations in Tech', excerpt: 'Discover how we\'re driving innovation and digital excellence for growing enterprises' }
 ];
 
 const News = () => {
   return (
     <main>
+      <SEO
+        title="Newsroom"
+        description="Latest press releases, product announcements, and insights from Web4rtTech."
+        path="/news"
+      />
+
       <section className="page-hero">
         <div className="container">
           <h1>Newsroom</h1>

@@ -52,7 +52,8 @@ const AdminLogin = () => {
     <main className="admin-login-page">
       <div className="admin-login-card">
         <div className="admin-login-logo">
-          Web<span>4</span>rt
+          <span className="admin-login-logo-mark">4</span>
+          <span className="admin-login-logo-text">Web<span>4</span>rtTech</span>
         </div>
         <p className="admin-login-subtitle">Admin Sign In</p>
 
@@ -68,7 +69,7 @@ const AdminLogin = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              placeholder="admin@web4rt.com"
+              placeholder="admin@web4rttech.com"
               autoFocus
             />
           </div>

@@ -1,14 +1,21 @@
 import React from 'react';
 import HeroIllustration from '../components/HeroIllustration';
+import SEO from '../components/SEO';
 import './AboutUs.css';
 
 const AboutUs = () => {
   return (
     <main>
+      <SEO
+        title="About Us"
+        description="Web4rtTech is a technology partner for businesses that want to move faster — we design, build, and scale digital products, cloud platforms, and AI-driven solutions."
+        path="/about"
+      />
+
       <section className="page-hero">
         <div className="container page-hero-flex">
           <div className="page-hero-text">
-            <h1>About Web4rt</h1>
+            <h1>About Web4rtTech</h1>
             <p>A digital-first IT services and consulting company</p>
           </div>
           <div className="page-hero-illustration">
@@ -22,7 +29,7 @@ const AboutUs = () => {
           <div className="about-section">
             <h2>Who We Are</h2>
             <p>
-              Web4rt is a technology partner for businesses that want to move faster. We design,
+              Web4rtTech is a technology partner for businesses that want to move faster. We design,
               build, and scale digital products, cloud platforms, and AI-driven solutions that
               help organizations navigate their next chapter of growth.
             </p>

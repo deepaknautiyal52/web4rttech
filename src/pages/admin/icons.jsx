@@ -50,6 +50,14 @@ export const IconSettings = (props) => (
   </svg>
 );
 
+export const IconWallet = (props) => (
+  <svg {...base} {...props}>
+    <path d="M20 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2Z" />
+    <path d="M16 7V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2" />
+    <circle cx="16.5" cy="13" r="1.5" />
+  </svg>
+);
+
 export const IconChevronRight = (props) => (
   <svg {...base} {...props}>
     <path d="M9 6l6 6-6 6" />

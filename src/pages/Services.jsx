@@ -4,10 +4,17 @@ import './Services.css';
 import services, { categories } from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
 import HeroIllustration from '../components/HeroIllustration';
+import SEO from '../components/SEO';
 
 const Services = () => {
   return (
     <main>
+      <SEO
+        title="Our Services"
+        description="Explore Web4rtTech's services: web & mobile development, cloud services, SEO, SMO, PPC & Google Ads, digital marketing strategy, AdSense monetization, AI solutions, and data science."
+        path="/services"
+      />
+
       <section className="page-hero">
         <div className="container page-hero-flex">
           <div className="page-hero-text">
@@ -25,7 +32,7 @@ const Services = () => {
           <div className="services-intro">
             <h2>What We Offer</h2>
             <p>
-              Web4rt provides end-to-end technology and growth services that help businesses build
+              Web4rtTech provides end-to-end technology and growth services that help businesses build
               great products and get them in front of the right customers.
             </p>
           </div>
@@ -58,7 +65,7 @@ const Services = () => {
 
       <section className="service-benefits">
         <div className="container">
-          <h2>Why Choose Web4rt?</h2>
+          <h2>Why Choose Web4rtTech?</h2>
           <div className="benefits-grid">
             <div className="benefit-item">
               <h3>One Team, Every Channel</h3>

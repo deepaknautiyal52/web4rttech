@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FinanceEntryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,4 +41,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/contacts/{contact}', [ContactController::class, 'update']);
     Route::patch('/contacts/{contact}', [ContactController::class, 'update']);
     Route::delete('/contacts/{contact}', [ContactController::class, 'destroy']);
+
+    // Company finances (expenses & income) -- fully private, no public routes.
+    Route::get('/finance-entries/analytics', [FinanceEntryController::class, 'analytics']);
+    Route::apiResource('finance-entries', FinanceEntryController::class);
 });

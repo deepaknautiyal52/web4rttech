@@ -1,0 +1,137 @@
+.admin-add-btn {
+  background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+  color: #ffffff;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.admin-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+}
+
+/* Flat (non-gradient) stat value variants for income/expense/net */
+.admin-stat-value-flat {
+  background: none;
+}
+
+.admin-stat-value-flat.income-text {
+  -webkit-text-fill-color: #0ca30c;
+  color: #0ca30c;
+}
+
+.admin-stat-value-flat.expense-text {
+  -webkit-text-fill-color: #d03b3b;
+  color: #d03b3b;
+}
+
+/* Add/Edit form panel */
+.finance-form-panel {
+  margin-bottom: 24px;
+}
+
+.finance-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Entries table */
+.finance-table-wrap {
+  overflow-x: auto;
+}
+
+.finance-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.finance-table th {
+  text-align: left;
+  padding: 12px 16px;
+  background-color: #f8f8fc;
+  color: #666;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #eee;
+}
+
+.finance-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 13px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.finance-type-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.finance-type-badge.income {
+  background-color: #ECFDF5;
+  color: #047857;
+}
+
+.finance-type-badge.expense {
+  background-color: #FEF2F2;
+  color: #B91C1C;
+}
+
+.finance-category-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.finance-amount-income {
+  color: #0ca30c;
+  font-weight: 700;
+}
+
+.finance-amount-expense {
+  color: #d03b3b;
+  font-weight: 700;
+}
+
+.finance-row-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.finance-row-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
+
+.finance-row-actions button:hover {
+  background-color: #f0f0f5;
+}
+
+@media (max-width: 768px) {
+  .finance-form-row {
+    grid-template-columns: 1fr;
+  }
+}

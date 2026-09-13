@@ -1,11 +1,12 @@
 {
-  "name": "infosys-clone",
+  "name": "web4rttech",
   "version": "1.0.0",
-  "description": "Infosys Website Clone built with React",
+  "description": "Web4rtTech - digital-first IT services and consulting company website",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^3.0.0",
     "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.1",
     "recharts": "^3.10.1"
