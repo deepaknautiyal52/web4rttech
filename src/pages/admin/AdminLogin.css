@@ -48,6 +48,22 @@
   color: #06B6D4;
 }
 
+.admin-login-logo-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.admin-login-logo-tagline {
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
 .admin-login-subtitle {
   text-align: center;
   color: #666;

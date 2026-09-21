@@ -20,7 +20,10 @@ const Footer = () => {
         <div className="footer-section footer-brand">
           <Link to="/" className="footer-logo">
             <span className="footer-logo-mark">4</span>
-            <span className="footer-logo-text">Web<span>4</span>rtTech</span>
+            <span className="footer-logo-copy">
+              <span className="footer-logo-text">Web<span>4</span>rtTech</span>
+              <span className="footer-logo-tagline">Build · Grow · Automate</span>
+            </span>
           </Link>
           <p className="footer-tagline">Engineering digital experiences that move your business forward.</p>
         </div>

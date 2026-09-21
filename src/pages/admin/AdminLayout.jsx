@@ -37,7 +37,10 @@ const AdminLayout = () => {
       <aside className="admin-sidebar">
         <div className="admin-sidebar-logo">
           <span className="admin-sidebar-logo-mark">4</span>
-          <span className="admin-sidebar-logo-text">Web<span>4</span>rtTech</span>
+          <span className="admin-sidebar-logo-copy">
+            <span className="admin-sidebar-logo-text">Web<span>4</span>rtTech</span>
+            <span className="admin-sidebar-logo-tagline">Build · Grow · Automate</span>
+          </span>
         </div>
 
         <nav className="admin-nav">

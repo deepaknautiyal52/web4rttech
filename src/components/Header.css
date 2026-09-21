@@ -6,18 +6,6 @@
   z-index: 100;
 }
 
-.header::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #4F46E5 0%, #06B6D4 100%);
-  opacity: 0.55;
-  pointer-events: none;
-}
-
 .header-container {
   position: relative;
   z-index: 2;
@@ -67,6 +55,22 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: 0.3px;
+}
+
+.logo-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-tagline {
+  margin-top: 3px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #6b7280;
+  white-space: nowrap;
 }
 
 .logo-accent {
@@ -265,5 +269,11 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-tagline {
+    display: none;
   }
 }

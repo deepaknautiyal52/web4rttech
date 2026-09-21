@@ -11,7 +11,10 @@ const Header = () => {
       <div className="container header-container">
         <NavLink to="/" onClick={closeMenu} className="logo">
           <span className="logo-mark">4</span>
-          <span className="logo-text">Web<span className="logo-accent">4</span>rtTech</span>
+          <span className="logo-copy">
+            <span className="logo-text">Web<span className="logo-accent">4</span>rtTech</span>
+            <span className="logo-tagline">Build · Grow · Automate</span>
+          </span>
         </NavLink>
 
         <nav className={`nav ${menuOpen ? 'active' : ''}`} aria-label="Primary Navigation">

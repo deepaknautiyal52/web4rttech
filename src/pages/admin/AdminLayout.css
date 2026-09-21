@@ -49,6 +49,22 @@
   color: #22D3EE;
 }
 
+.admin-sidebar-logo-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.admin-sidebar-logo-tagline {
+  margin-top: 3px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+}
+
 .admin-nav {
   display: flex;
   flex-direction: column;
@@ -180,6 +196,10 @@
     flex-direction: row;
     align-items: center;
     padding: 0 16px;
+  }
+
+  .admin-sidebar-logo-tagline {
+    display: none;
   }
 
   .admin-sidebar-logo {

@@ -53,7 +53,10 @@ const AdminLogin = () => {
       <div className="admin-login-card">
         <div className="admin-login-logo">
           <span className="admin-login-logo-mark">4</span>
-          <span className="admin-login-logo-text">Web<span>4</span>rtTech</span>
+          <span className="admin-login-logo-copy">
+            <span className="admin-login-logo-text">Web<span>4</span>rtTech</span>
+            <span className="admin-login-logo-tagline">Build · Grow · Automate</span>
+          </span>
         </div>
         <p className="admin-login-subtitle">Admin Sign In</p>
 
