@@ -15,6 +15,9 @@ import { API_URL, clearSession, getToken, getUser } from '../../utils/adminAuth'
 import services from '../../data/services';
 import { PERIOD_OPTIONS, buildBuckets, aggregateInquiries, aggregateRevenue } from './analyticsUtils';
 import { STATUS_META } from './statusMeta';
+import { canAccess } from './permissions';
+import AttentionPanel from './components/AttentionPanel';
+import PipelineInsights from './components/PipelineInsights';
 import './AdminOverview.css';
 
 const COLOR_INQUIRIES = '#4F46E5';
@@ -54,12 +57,16 @@ const BarTooltip = ({ active, payload, valueFormatter, color }) => {
 const AdminOverview = () => {
   const navigate = useNavigate();
   const user = getUser();
+  const showLeads = canAccess(user, 'leads');
   const [contacts, setContacts] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(showLeads);
   const [error, setError] = useState('');
   const [period, setPeriod] = useState('month');
 
   useEffect(() => {
+    // Lead analytics are only for roles with access to leads.
+    if (!showLeads) return;
+
     const load = async () => {
       try {
         const response = await fetch(`${API_URL}/analytics`, {
@@ -84,7 +91,7 @@ const AdminOverview = () => {
     };
 
     load();
-  }, [navigate]);
+  }, [navigate, showLeads]);
 
   const buckets = useMemo(() => buildBuckets(period), [period]);
   const inquirySeries = useMemo(
@@ -124,7 +131,7 @@ const AdminOverview = () => {
 
   const statusBreakdown = useMemo(() => {
     if (!contacts) return [];
-    const counts = { new: 0, contacted: 0, won: 0, lost: 0 };
+    const counts = Object.fromEntries(Object.keys(STATUS_META).map((key) => [key, 0]));
     contacts.forEach((c) => {
       if (counts[c.status] !== undefined) counts[c.status] += 1;
     });
@@ -142,15 +149,18 @@ const AdminOverview = () => {
       <div className="admin-page-header">
         <div>
           <h1>Welcome back{user?.name ? `, ${user.name}` : ''}</h1>
-          <p>Inquiry volume and business performance at a glance.</p>
+          <p>What needs attention today, plus inquiry volume and business performance at a glance.</p>
         </div>
       </div>
+
+      <AttentionPanel />
 
       {error && <div className="admin-dashboard-error">{error}</div>}
       {loading && <div className="admin-dashboard-loading">Loading analytics...</div>}
 
       {!loading && contacts && (
         <>
+          <h2 className="admin-section-title">Inquiries</h2>
           <div className="admin-stat-grid">
             <div className="admin-stat-card">
               <span className="admin-stat-label">Total Inquiries</span>
@@ -323,6 +333,8 @@ const AdminOverview = () => {
               </div>
             </div>
           </div>
+
+          <PipelineInsights contacts={contacts} />
 
           <div className="admin-panel">
             <div className="admin-panel-header">

@@ -98,6 +98,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Admin Notification Recipients
+    |--------------------------------------------------------------------------
+    |
+    | Comma-separated addresses for new-inquiry emails and the daily digest.
+    | When empty, the emails go to admin panel users with the right role.
+    |
+    */
+
+    'admin_notify' => env('ADMIN_NOTIFY_EMAIL'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Markdown Mail Settings
     |--------------------------------------------------------------------------
     |

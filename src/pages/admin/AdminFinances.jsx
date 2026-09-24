@@ -13,11 +13,13 @@ import {
 } from 'recharts';
 import { API_URL, clearSession, getToken } from '../../utils/adminAuth';
 import { PERIOD_OPTIONS, buildBuckets } from './analyticsUtils';
-import { CATEGORY_META, CATEGORY_OPTIONS, CURRENCY_OPTIONS, formatMoney } from './financeMeta';
+import { CATEGORY_META, CATEGORY_OPTIONS, CURRENCY_OPTIONS, RECURRENCE_OPTIONS, formatMoney, monthlyAmount } from './financeMeta';
+import { downloadExport } from './api';
 import './AdminFinances.css';
 
 const COLOR_INCOME = '#0ca30c';
 const COLOR_EXPENSE = '#d03b3b';
+const COLOR_MARGIN = '#4F46E5';
 
 const emptyForm = {
   id: null,
@@ -29,7 +31,8 @@ const emptyForm = {
   currency: 'INR',
   period_start: '',
   period_end: '',
-  notes: ''
+  notes: '',
+  recurrence: ''
 };
 
 const LineTooltip = ({ active, payload, label, color }) => {
@@ -136,8 +139,32 @@ const AdminFinances = () => {
     const totalExpense = entries
       .filter((e) => e.type === 'expense')
       .reduce((sum, e) => sum + (parseFloat(e.amount) || 0), 0);
-    return { totalIncome, totalExpense, net: totalIncome - totalExpense };
+    // Recurring expenses normalised to a per-month cost.
+    const recurring = entries.filter((e) => e.type === 'expense' && e.recurrence);
+    const monthlyBurn = recurring.reduce((sum, e) => sum + monthlyAmount(e), 0);
+    return { totalIncome, totalExpense, net: totalIncome - totalExpense, monthlyBurn, recurringCount: recurring.length };
   }, [entries]);
+
+  // Profit margin per bucket; null (a gap in the line) where there was no income.
+  const marginSeries = useMemo(
+    () =>
+      incomeSeries.map((bucket, i) => {
+        const expense = expenseSeries[i]?.value || 0;
+        return {
+          label: bucket.label,
+          value: bucket.value > 0 ? Math.round(((bucket.value - expense) / bucket.value) * 100) : null
+        };
+      }),
+    [incomeSeries, expenseSeries]
+  );
+
+  const handleExport = async () => {
+    try {
+      await downloadExport('finances');
+    } catch (err) {
+      setError(err.message || 'Export failed.');
+    }
+  };
 
   const categoryBreakdown = useMemo(() => {
     if (!entries) return [];
@@ -183,7 +210,8 @@ const AdminFinances = () => {
       currency: entry.currency || 'INR',
       period_start: entry.period_start,
       period_end: entry.period_end || '',
-      notes: entry.notes || ''
+      notes: entry.notes || '',
+      recurrence: entry.recurrence || ''
     });
     setFormErrors({});
     setFormErrorMessage('');
@@ -212,6 +240,7 @@ const AdminFinances = () => {
     const payload = { ...formData };
     delete payload.id;
     if (!payload.period_end) delete payload.period_end;
+    if (!payload.recurrence) payload.recurrence = null;
 
     try {
       const response = await fetch(url, {
@@ -281,9 +310,14 @@ const AdminFinances = () => {
           <h1>Company Finances</h1>
           <p>Domain, hosting, and salary costs alongside sales &amp; income.</p>
         </div>
-        <button type="button" className="admin-add-btn" onClick={openAddForm}>
-          + Add Entry
-        </button>
+        <div className="admin-header-actions">
+          <button type="button" className="admin-secondary-btn" onClick={handleExport}>
+            ⬇ Export CSV
+          </button>
+          <button type="button" className="admin-add-btn" onClick={openAddForm}>
+            + Add Entry
+          </button>
+        </div>
       </div>
 
       {error && <div className="admin-dashboard-error">{error}</div>}
@@ -396,6 +430,18 @@ const AdminFinances = () => {
             </div>
 
             <div className="admin-form-group">
+              <label htmlFor="recurrence">Repeats</label>
+              <select id="recurrence" name="recurrence" value={formData.recurrence} onChange={handleFormChange}>
+                {RECURRENCE_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+              <span className="resource-field-help">
+                Recurring expenses (salaries, tools, hosting) count towards the monthly burn figure.
+              </span>
+            </div>
+
+            <div className="admin-form-group">
               <label htmlFor="notes">Notes</label>
               <textarea
                 id="notes"
@@ -438,8 +484,13 @@ const AdminFinances = () => {
               </span>
             </div>
             <div className="admin-stat-card">
-              <span className="admin-stat-label">Total Entries</span>
-              <span className="admin-stat-value">{entries.length}</span>
+              <span className="admin-stat-label">Monthly Burn</span>
+              <span className="admin-stat-value admin-stat-value-flat expense-text">
+                {formatMoney(stats.monthlyBurn)}
+              </span>
+              <span className="admin-stat-sub">
+                {stats.recurringCount} recurring expense{stats.recurringCount === 1 ? '' : 's'}
+              </span>
             </div>
           </div>
 
@@ -499,6 +550,35 @@ const AdminFinances = () => {
           </div>
 
           <div className="admin-panel" style={{ marginBottom: 20 }}>
+            <h2 className="admin-chart-title">Profit Margin</h2>
+            {marginSeries.every((m) => m.value === null) ? (
+              <div className="admin-empty-state">No income recorded in this period yet.</div>
+            ) : (
+              <ResponsiveContainer width="100%" height={200}>
+                <LineChart data={marginSeries} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                  <CartesianGrid stroke="#e1e0d9" vertical={false} />
+                  <XAxis dataKey="label" tick={{ fontSize: 12, fill: '#898781' }} axisLine={{ stroke: '#c3c2b7' }} tickLine={false} />
+                  <YAxis tick={{ fontSize: 12, fill: '#898781' }} axisLine={false} tickLine={false} width={46} tickFormatter={(v) => `${v}%`} />
+                  <RechartsTooltip
+                    content={({ active, payload, label }) =>
+                      active && payload && payload.length && payload[0].value !== null ? (
+                        <div className="chart-tooltip">
+                          <div className="chart-tooltip-value">
+                            <span className="chart-tooltip-swatch" style={{ backgroundColor: COLOR_MARGIN }} />
+                            {payload[0].value}% margin
+                          </div>
+                          <div className="chart-tooltip-label">{label}</div>
+                        </div>
+                      ) : null
+                    }
+                  />
+                  <Line type="monotone" dataKey="value" connectNulls={false} stroke={COLOR_MARGIN} strokeWidth={2} dot={{ r: 4, fill: COLOR_MARGIN, stroke: '#fff', strokeWidth: 2 }} activeDot={{ r: 5 }} />
+                </LineChart>
+              </ResponsiveContainer>
+            )}
+          </div>
+
+          <div className="admin-panel" style={{ marginBottom: 20 }}>
             <h2 className="admin-chart-title">Expenses by Category</h2>
             {categoryBreakdown.length === 0 ? (
               <div className="admin-empty-state">No expenses recorded yet.</div>
@@ -548,7 +628,14 @@ const AdminFinances = () => {
                           <span className="finance-category-dot" style={{ backgroundColor: CATEGORY_META[entry.category]?.color || '#898781' }} />
                           {CATEGORY_META[entry.category]?.label || entry.category}
                         </td>
-                        <td>{entry.title}</td>
+                        <td>
+                          {entry.title}
+                          {entry.recurrence && (
+                            <span className="finance-recurring-tag" title="Recurring">
+                              ↻ {RECURRENCE_OPTIONS.find((r) => r.value === entry.recurrence)?.label}
+                            </span>
+                          )}
+                        </td>
                         <td>{entry.party_name || '—'}</td>
                         <td className={entry.type === 'income' ? 'finance-amount-income' : 'finance-amount-expense'}>
                           {formatMoney(entry.amount, entry.currency)}

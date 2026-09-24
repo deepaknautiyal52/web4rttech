@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { fetchArticles } from '../data/news';
 import './News.css';
 
-const articles = [
-  { id: 'ai-first-delivery', title: 'Web4rtTech Launches AI-First Delivery Framework', excerpt: 'A new approach to project delivery that embeds AI-assisted engineering across every stage' },
-  { id: 'cloud-fabric', title: 'Web4rtTech Cloud Fabric™ Now Live', excerpt: 'A composable stack of cloud services and connectors built to accelerate enterprise migrations' },
-  { id: 'innovations-2025', title: 'New Innovations in Tech', excerpt: 'Discover how we\'re driving innovation and digital excellence for growing enterprises' }
-];
-
 const News = () => {
+  const [articles, setArticles] = useState(null);
+
+  useEffect(() => {
+    fetchArticles().then(setArticles);
+  }, []);
+
   return (
     <main>
       <SEO
@@ -28,11 +29,13 @@ const News = () => {
       <section className="news-list-section">
         <div className="container">
           <div className="news-grid">
-            {articles.map(a => (
-              <article key={a.id} className="news-card">
+            {!articles && <p>Loading...</p>}
+            {articles && articles.length === 0 && <p>No news yet. Check back soon.</p>}
+            {articles && articles.map(a => (
+              <article key={a.slug} className="news-card">
                 <h3>{a.title}</h3>
                 <p>{a.excerpt}</p>
-                <Link to={`/news/${a.id}`} className="read-more">Read more →</Link>
+                <Link to={`/news/${a.slug}`} className="read-more">Read more →</Link>
               </article>
             ))}
           </div>

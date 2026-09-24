@@ -12,7 +12,6 @@ class AuthController extends Controller
     /**
      * Authenticate a user and issue a Sanctum API token.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function login(Request $request)
@@ -32,17 +31,15 @@ class AuthController extends Controller
 
         $token = $user->createToken('admin-token')->plainTextToken;
 
-
         return response()->json([
             'token' => $token,
-            'user' => $user->only('id', 'name', 'email'),
+            'user' => $user->only('id', 'name', 'email', 'role'),
         ]);
     }
 
     /**
      * Revoke the current access token.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)
@@ -55,7 +52,6 @@ class AuthController extends Controller
     /**
      * Update the authenticated user's password.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function updatePassword(Request $request)

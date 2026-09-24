@@ -21,6 +21,20 @@ import AdminOverview from './pages/admin/AdminOverview';
 import AdminSubmissions from './pages/admin/AdminSubmissions';
 import AdminFinances from './pages/admin/AdminFinances';
 import AdminSettings from './pages/admin/AdminSettings';
+import AdminClients from './pages/admin/AdminClients';
+import AdminClientDetail from './pages/admin/AdminClientDetail';
+import AdminProjects from './pages/admin/AdminProjects';
+import AdminQuotations from './pages/admin/AdminQuotations';
+import AdminInvoices from './pages/admin/AdminInvoices';
+import AdminRenewals from './pages/admin/AdminRenewals';
+import AdminEmployees from './pages/admin/AdminEmployees';
+import AdminTimesheets from './pages/admin/AdminTimesheets';
+import AdminTickets from './pages/admin/AdminTickets';
+import AdminArticles from './pages/admin/AdminArticles';
+import AdminUsers from './pages/admin/AdminUsers';
+import AdminAuditLog from './pages/admin/AdminAuditLog';
+import AdminDocumentPrint from './pages/admin/AdminDocumentPrint';
+import RequireArea from './pages/admin/components/RequireArea';
 import './App.css';
 
 function SiteLayout() {
@@ -53,10 +67,30 @@ function SiteLayout() {
           }
         >
           <Route index element={<AdminOverview />} />
-          <Route path="submissions" element={<AdminSubmissions />} />
-          <Route path="finances" element={<AdminFinances />} />
+          <Route path="submissions" element={<RequireArea area="leads"><AdminSubmissions /></RequireArea>} />
+          <Route path="quotations" element={<RequireArea area="quotations"><AdminQuotations /></RequireArea>} />
+          <Route path="clients" element={<RequireArea area="clients"><AdminClients /></RequireArea>} />
+          <Route path="clients/:id" element={<RequireArea area="clients"><AdminClientDetail /></RequireArea>} />
+          <Route path="projects" element={<RequireArea area="projects"><AdminProjects /></RequireArea>} />
+          <Route path="timesheets" element={<RequireArea area="timesheets"><AdminTimesheets /></RequireArea>} />
+          <Route path="tickets" element={<RequireArea area="tickets"><AdminTickets /></RequireArea>} />
+          <Route path="invoices" element={<RequireArea area="invoices"><AdminInvoices /></RequireArea>} />
+          <Route path="finances" element={<RequireArea area="finances"><AdminFinances /></RequireArea>} />
+          <Route path="renewals" element={<RequireArea area="renewals"><AdminRenewals /></RequireArea>} />
+          <Route path="team" element={<RequireArea area="employees"><AdminEmployees /></RequireArea>} />
+          <Route path="news" element={<RequireArea area="content"><AdminArticles /></RequireArea>} />
+          <Route path="users" element={<RequireArea area="users"><AdminUsers /></RequireArea>} />
+          <Route path="audit-log" element={<RequireArea area="audit"><AdminAuditLog /></RequireArea>} />
           <Route path="settings" element={<AdminSettings />} />
         </Route>
+        <Route
+          path="/admin-print/:kind/:id"
+          element={
+            <ProtectedRoute>
+              <AdminDocumentPrint />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       {!isAdminRoute && <Footer />}
     </div>

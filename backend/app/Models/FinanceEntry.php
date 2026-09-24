@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class FinanceEntry extends Model
 {
-    use HasFactory;
+    use Auditable, HasFactory;
 
     protected $fillable = [
         'type',
@@ -19,6 +20,7 @@ class FinanceEntry extends Model
         'period_start',
         'period_end',
         'notes',
+        'recurrence',
     ];
 
     protected $casts = [

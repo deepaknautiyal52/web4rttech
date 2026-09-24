@@ -11,7 +11,6 @@ class FinanceEntryController extends Controller
      * Display a listing of the resource. Supports optional filtering by
      * type (expense/income) and category, newest period first.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -30,7 +29,6 @@ class FinanceEntryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -45,6 +43,7 @@ class FinanceEntryController extends Controller
             'period_start' => ['required', 'date'],
             'period_end' => ['nullable', 'date', 'after_or_equal:period_start'],
             'notes' => ['nullable', 'string', 'max:2000'],
+            'recurrence' => ['nullable', 'in:monthly,quarterly,yearly'],
         ]);
 
         $entry = FinanceEntry::create($validated);
@@ -58,7 +57,6 @@ class FinanceEntryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\FinanceEntry  $financeEntry
      * @return \Illuminate\Http\Response
      */
     public function show(FinanceEntry $financeEntry)
@@ -69,8 +67,6 @@ class FinanceEntryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\FinanceEntry  $financeEntry
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, FinanceEntry $financeEntry)
@@ -85,6 +81,7 @@ class FinanceEntryController extends Controller
             'period_start' => ['sometimes', 'required', 'date'],
             'period_end' => ['nullable', 'date', 'after_or_equal:period_start'],
             'notes' => ['nullable', 'string', 'max:2000'],
+            'recurrence' => ['nullable', 'in:monthly,quarterly,yearly'],
         ]);
 
         $financeEntry->update($validated);
@@ -98,7 +95,6 @@ class FinanceEntryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\FinanceEntry  $financeEntry
      * @return \Illuminate\Http\Response
      */
     public function destroy(FinanceEntry $financeEntry)

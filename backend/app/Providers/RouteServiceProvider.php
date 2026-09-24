@@ -46,7 +46,14 @@ class RouteServiceProvider extends ServiceProvider
     protected function configureRateLimiting()
     {
         RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+            // Throttling runs before auth:sanctum, so resolve the token user
+            // explicitly. Admin pages fire several requests each, so signed-in
+            // users get a higher limit than anonymous visitors.
+            $user = auth('sanctum')->user();
+
+            return $user
+                ? Limit::perMinute(300)->by('user:'.$user->id)
+                : Limit::perMinute(60)->by($request->ip());
         });
     }
 }
