@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ventures from '../data/ventures';
 import './Footer.css';
 
 const Footer = () => {
@@ -47,6 +48,22 @@ const Footer = () => {
             <li><Link to="/services/seo">SEO</Link></li>
             <li><Link to="/services/ppc-google-ads">PPC &amp; Google Ads</Link></li>
             <li><Link to="/services/ai-solutions">AI Solutions</Link></li>
+          </ul>
+        </div>
+
+        <div className="footer-section">
+          <h3>Our Ventures</h3>
+          <ul>
+            {ventures.map((v) => (
+              <li key={v.id}>
+                {v.url ? (
+                  <a href={v.url} target="_blank" rel="noopener noreferrer">{v.name} ↗</a>
+                ) : (
+                  <Link to={`/ventures#${v.id}`}>{v.name}</Link>
+                )}
+              </li>
+            ))}
+            <li><Link to="/ventures">All Ventures</Link></li>
           </ul>
         </div>
 

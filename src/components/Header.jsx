@@ -21,6 +21,7 @@ const Header = () => {
           <NavLink to="/" onClick={closeMenu} end className={({ isActive }) => (isActive ? 'active-link' : '')}>Home</NavLink>
           <NavLink to="/about" onClick={closeMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>About</NavLink>
           <NavLink to="/services" onClick={closeMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>Services</NavLink>
+          <NavLink to="/ventures" onClick={closeMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>Ventures</NavLink>
           <NavLink to="/careers" onClick={closeMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>Careers</NavLink>
           <NavLink to="/contact" onClick={closeMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>Contact</NavLink>
           <NavLink to="/contact" onClick={closeMenu} className="nav-cta nav-cta-mobile">Get a Quote</NavLink>

@@ -4,6 +4,7 @@ import services from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
 import HeroSlider from '../components/HeroSlider';
 import SEO from '../components/SEO';
+import VentureGrid from '../components/VentureGrid';
 import './Home.css';
 
 const FEATURED_SERVICE_IDS = [
@@ -97,6 +98,21 @@ const Home = () => {
           </div>
           <div className="services-view-all">
             <Link to="/services" className="services-view-all-link">View All Services →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Ventures Section */}
+      <section className="ventures-section">
+        <div className="container">
+          <h2>Beyond Technology</h2>
+          <p className="ventures-section-intro">
+            The Web4rtTech family also runs homestays in Uttarakhand, a real estate business, and yoga &amp; wellness
+            programmes, each with its own website.
+          </p>
+          <VentureGrid />
+          <div className="services-view-all">
+            <Link to="/ventures" className="services-view-all-link">Explore Our Ventures →</Link>
           </div>
         </div>
       </section>

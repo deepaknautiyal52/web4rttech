@@ -10,6 +10,7 @@ import ServiceDetail from './pages/ServiceDetail';
 import News from './pages/News';
 import NewsArticle from './pages/NewsArticle';
 import Careers from './pages/Careers';
+import Ventures from './pages/Ventures';
 import Contact from './pages/Contact';
 import TermsOfUse from './pages/TermsOfUse';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -52,6 +53,7 @@ function SiteLayout() {
         <Route path="/news" element={<News />} />
         <Route path="/news/:id" element={<NewsArticle />} />
         <Route path="/careers" element={<Careers />} />
+        <Route path="/ventures" element={<Ventures />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms" element={<TermsOfUse />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />

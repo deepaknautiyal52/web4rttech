@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import services, { categories } from '../data/services';
 import HeroIllustration from '../components/HeroIllustration';
 import SEO from '../components/SEO';
+import ventures from '../data/ventures';
 import './SiteMap.css';
 
 const NEWS_ARTICLES = [
@@ -41,6 +42,7 @@ const SiteMap = () => {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About Us</Link></li>
                 <li><Link to="/careers">Careers</Link></li>
+                <li><Link to="/ventures">Our Ventures</Link></li>
                 <li><Link to="/news">Newsroom</Link></li>
                 <li><Link to="/contact">Contact / Get a Quote</Link></li>
               </ul>
@@ -59,6 +61,22 @@ const SiteMap = () => {
                 </ul>
               </div>
             ))}
+
+            <div className="sitemap-section">
+              <h2>Our Ventures</h2>
+              <ul>
+                <li><Link to="/ventures">All Ventures</Link></li>
+                {ventures.map((v) => (
+                  <li key={v.id}>
+                    {v.url ? (
+                      <a href={v.url} target="_blank" rel="noopener noreferrer">{v.name} ↗</a>
+                    ) : (
+                      <Link to={`/ventures#${v.id}`}>{v.name}</Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <div className="sitemap-section">
               <h2>Newsroom</h2>

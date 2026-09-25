@@ -134,6 +134,45 @@
   line-height: 1.7;
 }
 
+/* Ventures Section (sister businesses) */
+.ventures-section {
+  padding: 100px 20px;
+  background-color: #f4f5fa;
+}
+
+.ventures-section h2 {
+  font-size: 42px;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #4F46E5;
+  font-weight: 700;
+}
+
+.ventures-section-intro {
+  max-width: 720px;
+  margin: 0 auto 50px;
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.ventures-section .venture-card {
+  background: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .ventures-section h2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ventures-section {
+    padding: 50px 20px;
+  }
+}
+
 /* Services Section */
 .services-section {
   padding: 100px 20px;

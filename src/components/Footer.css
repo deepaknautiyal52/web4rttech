@@ -55,8 +55,8 @@
 .footer .footer-content {
   position: relative;
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.4fr repeat(5, 1fr);
+  gap: 32px;
   padding: 60px 20px 40px;
   max-width: 1400px;
   margin: 0 auto;

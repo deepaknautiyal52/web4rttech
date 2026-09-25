@@ -1,0 +1,121 @@
+.venture-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.venture-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+  padding: 34px 28px 28px;
+  border-radius: 12px;
+  border-top: 4px solid var(--venture-color, #4F46E5);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-margin-top: 100px;
+}
+
+.venture-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(20, 18, 58, 0.1);
+}
+
+.venture-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--venture-color, #4F46E5);
+  background-color: #f0f0f5;
+  background-color: color-mix(in srgb, var(--venture-color, #4F46E5) 12%, #ffffff);
+  margin-bottom: 18px;
+}
+
+.venture-category {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--venture-color, #4F46E5);
+}
+
+.venture-card h3 {
+  font-size: 22px;
+  color: #1a1a2e;
+  margin: 6px 0 6px;
+}
+
+.venture-tagline {
+  font-weight: 600;
+  color: #444 !important;
+  margin-bottom: 10px;
+}
+
+.venture-card p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.venture-highlights {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.venture-highlights li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 14px;
+  color: #444;
+}
+
+.venture-highlights li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--venture-color, #4F46E5);
+}
+
+.venture-actions {
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.venture-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: var(--venture-color, #4F46E5);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.venture-link:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .venture-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .venture-grid {
+    grid-template-columns: 1fr;
+  }
+}
